@@ -1,1 +1,52 @@
 @import "tailwindcss";
+
+@theme {
+    /* 브랜드 컬러 정의 */
+    --color-brand-main: #FFD24C;    /* 메인: 이름, 강조 타이틀 */
+    --color-brand-point: #92B4EC;   /* 포인트: 서브 타이틀, 링크, 불렛 */
+    --color-brand-sub: #FFE69A;     /* 보조: 강조 라인, 약한 배경 */
+    --color-brand-white: #FFFFFF;   /* 텍스트 및 카드 내부 배경 */
+
+    /* 어두운 배경용 컬러 */
+    --color-dark-bg: #050505;
+    --color-dark-card: rgba(255, 255, 255, 0.05);
+}
+
+@layer base {
+    body {
+        background-color: var(--color-dark-bg);
+        color: var(--color-brand-white);
+        -webkit-font-smoothing: antialiased;
+        /* 이중 스크롤 방지 */
+        margin: 0;
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+
+    /* 스크롤바 커스텀 (v4에서도 유효) */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--color-dark-bg);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-brand-point);
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-brand-main);
+    }
+}
+
+@layer components {
+    /* 유리창 효과 카드 */
+    .glass-card {
+        background: var(--color-dark-card);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 2.5rem;
+        padding: 2rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+}
