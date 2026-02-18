@@ -1,0 +1,23 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main] # main 브랜치에 코드가 push될 때마다 실행
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build # dist 폴더가 생성됨
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # 빌드된 결과물이 있는 폴더명 (Vite 기준)
+          branch: gh-pages # 배포된 파일이 저장될 브랜치
