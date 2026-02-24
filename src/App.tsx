@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import AboutMe from './components/About/AboutMe.tsx';
 import Terminal from './components/Terminal/Terminal.tsx';
+import AbountMeCard from './components/AboutMe/AbountMeCard.tsx';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                     <ul className="flex gap-10 font-bold text-sm uppercase tracking-widest">
                         <li><Link to="/about" className="hover:text-brand-main text-gray-400">About</Link></li>
                         <li><Link to="/projects" className="hover:text-brand-main text-gray-400">Projects</Link></li>
+                        <li><Link to="/aboutMe" className="hover:text-brand-main text-gray-400">AboutMe</Link></li>
                     </ul>
                 </nav>
 
@@ -30,6 +32,7 @@ function App() {
                         } />
                         <Route path="/about" element={<AboutMe />} />
                         <Route path="/projects" element={<Terminal />} />
+                        <Route path="/aboutMe" element={<AbountMeCard />} />
                     </Routes>
                 </main>
             </div>
