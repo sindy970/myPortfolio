@@ -2,8 +2,26 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import AboutMe from './components/About/AboutMe.tsx';
 import Terminal from './components/Terminal/Terminal.tsx';
 import AbountMeCard from './components/AboutMe/AbountMeCard.tsx';
+import MetroTimeline from './components/Career/MetroTimeline.tsx';
+import CardStack from './components/Career/CardStack.tsx';
+import CareerDetail from './components/Career/CareerDetail.tsx';
+import type {CareerData} from './types/career.ts';
+import {useEffect, useState} from "react";
 
+// 임시 데이터 (나중에 API 호출로 대체)
+const mockData: CareerData[] = [
+    { id: 1, date: "2018-2022", title: "OO University", desc: "Computer Science Major", color: "#6366F1" },
+    { id: 2, date: "2022-2023", title: "Tech Startup A", desc: "Front-end Developer Intern", color: "#10B981" },
+    { id: 3, date: "2023-PRESENT", title: "Global Corp B", desc: "Full-stack Engineer", color: "#F59E0B" },
+];
 function App() {
+    const [data, setData] = useState<CareerData[]>([]);
+
+    useEffect(() => {
+        // TODO: fetch('http://localhost:5000/api/career').then...
+        setData(mockData);
+    }, []);
+
     return (
         // 여기에 basename을 넣습니다. (GitHub 저장소 이름)
         <BrowserRouter basename="/myPortfolio">
@@ -16,6 +34,9 @@ function App() {
                         <li><Link to="/about" className="hover:text-brand-main text-gray-400">About</Link></li>
                         <li><Link to="/projects" className="hover:text-brand-main text-gray-400">Projects</Link></li>
                         <li><Link to="/aboutMe" className="hover:text-brand-main text-gray-400">AboutMe</Link></li>
+                        <li><Link to="/metroTimeline" className="hover:text-brand-main text-gray-400">MetroTimeline</Link></li>
+                        <li><Link to="/cardStack" className="hover:text-brand-main text-gray-400">CardStack</Link></li>
+                        <li><Link to="/careerDetail" className="hover:text-brand-main text-gray-400">CareerDetail</Link></li>
                     </ul>
                 </nav>
 
@@ -33,6 +54,9 @@ function App() {
                         <Route path="/about" element={<AboutMe />} />
                         <Route path="/projects" element={<Terminal />} />
                         <Route path="/aboutMe" element={<AbountMeCard />} />
+                        <Route path="/metroTimeline" element={<MetroTimeline data={data} />} />
+                        <Route path="/cardStack" element={<CardStack data={data} />} />
+                        <Route path="/careerDetail" element={<CareerDetail />} />
                     </Routes>
                 </main>
             </div>
