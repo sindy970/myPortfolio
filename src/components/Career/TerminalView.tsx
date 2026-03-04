@@ -34,7 +34,7 @@ const TerminalView = ({ selectedCareer }: Props) => {
                             <div className="text-blue-300 mb-2">[INFO] Loading project history for {selectedCareer.date}...</div>
 
                             <div className="space-y-4 mt-4">
-                                {selectedCareer.projects.map((proj, i) => (
+                                {selectedCareer.projects?.map((proj, i) => (
                                     <motion.div
                                         key={i}
                                         initial={{ x: -10, opacity: 0 }}
